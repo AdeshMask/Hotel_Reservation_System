@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class HotelReservationSystem {
     public Scanner scanner = new Scanner(System.in);
+    static List<HotelData> hotelsList = new ArrayList<HotelData>();
     public static int week_Day_Regualr_Rates;
     static int week_Day_Rewards_Rates;
     static int week_End_Regular_Rates;
@@ -10,33 +13,20 @@ public class HotelReservationSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Hotels hotels = new Hotels();
-        System.out.println("Welcome to hotel reservation system:");
-        System.out.println("Select your Hotel"+"\n1 Lakewood \n2 Bridgewood \n3 ridgewood");
-        int choice = scanner.nextInt();
-        switch (choice){
-            case 1:
-                hotels.lakeWood();
-                break;
-            case 2:
+        System.out.println("\nWelcome to hotel reservation system:");
+        addHotels();
+    }
 
-                break;
-            case 3:
-                System.out.println("Welcome to lakeWood hotel:");
-                System.out.println("Enter Customer type: ");
-                int ch2 = scanner.nextInt();
-                if (ch2 == 1){
-                    week_Day_Regualr_Rates = 220;
-                    week_Day_Rewards_Rates = 100;
-                    hotels.regularRates(week_Day_Regualr_Rates,week_Day_Rewards_Rates);
-                }
-                else {
-                    week_End_Regular_Rates = 150;
-                    week_End_Rewards_Rates = 40;
-                    hotels.rewardsrates(week_End_Regular_Rates, week_End_Rewards_Rates);
-                }
-                break;
-            default:
-                System.out.println("Invalid choice....");
-        }
+    private static void addHotels() {
+        HotelData hotel1 = new HotelData("Lakewood",110);
+        hotelsList.add(hotel1);
+        HotelData hotel2 = new HotelData("Bridgewood",160);
+        hotelsList.add(hotel2);
+        HotelData hotel3 = new HotelData("Ridgewood",220);
+        hotelsList.add(hotel3);
+        getList();
+    }
+    private static void getList() {
+        System.out.println(hotelsList.toString());
     }
 }
